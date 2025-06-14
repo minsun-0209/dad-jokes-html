@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>랜덤 아재개그 머신</title>
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      height: 100vh;
+      background: #fffbe7;
+      font-family: 'Pretendard', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #444;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .joke {
+      font-size: 28px;
+      line-height: 1.4;
+      margin-bottom: 50px;
+      min-height: 100px;
+    }
+
+    button {
+      font-size: 40px;
+      padding: 15px 30px;
+      border-radius: 15px;
+      border: none;
+      background-color: #ffcb05;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(255, 203, 5, 0.5);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #f0b400;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎲 랜덤 아재개그 머신 🎲</h1>
+    <div class="joke" id="joke">🤣 버튼을 눌러 개그를 들어보세요!</div>
+    <button id="jokeBtn" aria-label="새 아재개그 보기">🤣</button>
+  </div>
+
+  <script>
+    const jokes = [
+      "바나나가 웃으면? → 바나나킥ㅋㅋ",
+      "돼지가 절에 가면? → 돼지우리",
+      "박근혜가 온천에 들어가면? → 따그네",
+      "박근혜가 편안하면 → 포그네",
+      "박근혜가 꿀을 먹으면? → 달짝지근네",
+      "토끼가 길을 잃으면? → 토끼야 어디가",
+      "피카츄가 담배 피면? → 니코틴충",
+      "이순신 장군이 수영하면? → 진해수영장"
+    ];
+
+    const jokeEl = document.getElementById('joke');
+    const jokeBtn = document.getElementById('jokeBtn');
+
+    function getRandomJoke() {
+      return jokes[Math.floor(Math.random() * jokes.length)];
+    }
+
+    jokeBtn.addEventListener('click', () => {
+      let newJoke;
+      do {
+        newJoke = getRandomJoke();
+      } while (newJoke === jokeEl.textContent);
+      jokeEl.textContent = newJoke;
+    });
+  </script>
+</body>
+</html>
